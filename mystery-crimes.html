@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔍 CRÍMENES IMPERFECTOS - ZONA RESTRINGIDA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mystery-crimes.css">
+</head>
+<body>
+    <!-- INTRO SCREEN -->
+    <div class="intro-screen" id="introScreen">
+        <div class="intro-content">
+            <!-- MATRIX BACKGROUND FOR INTRO -->
+            <canvas class="intro-matrix-bg" id="introMatrixBg"></canvas>
+            
+            <!-- MAIN INTRO MESSAGE -->
+            <div class="intro-message">
+                <h1 class="intro-title">🚨 ZONA RESTRINGIDA 🚨</h1>
+                
+                <div class="intrigue-text">
+                    <p><strong>EN</strong> las sombras de la sociedad, donde la justicia se desvanece y la verdad se oculta tras un velo de mentiras, existe un lugar donde los crímenes más perfectos se revelan imperfectos. Aquí, en este sistema clasificado de nivel máximo, se documentan casos que han desafiado a las mejores agencias de inteligencia del mundo.</p>
+                    
+                    <p>Casos donde los asesinos creyeron haber cometido el crimen perfecto, donde los ladrones pensaron haber dejado cero rastros, donde los fraudes parecían imposibles de detectar. Pero siempre, sin excepción, un pequeño detalle, una huella invisible, una contradicción en el testimonio, o simplemente la arrogancia del criminal, ha revelado la verdad.</p>
+                    
+                    <p>Este es el archivo de los CRÍMENES IMPERFECTOS. Un compendio de investigaciones que demuestran que no existe el crimen perfecto, solo criminales que creen ser perfectos. Cada caso aquí documentado es una lección sobre la naturaleza humana, sobre cómo la codicia, el orgullo y la confianza excesiva siempre llevan a la caída.</p>
+                    
+                    <p>¿Estás listo para adentrarte en las mentes de aquellos que pensaron que podían burlar a la justicia? ¿Tienes el coraje de enfrentarte a la verdad sobre la imperfección humana?</p>
+                </div>
+                
+                <div class="enter-button-container">
+                    <button class="enter-button" id="enterButton" onclick="enterSystem()">
+                        <span class="button-text">🔓 ENTRAR AL SISTEMA</span>
+                        <span class="button-subtitle">Acceso autorizado - Click para continuar</span>
+                    </button>
+                </div>
+                
+                <div class="security-notice">
+                    <p>⚠️ <strong>ADVERTENCIA:</strong> Este sistema contiene información clasificada de nivel máximo.</p>
+                    <p>🔍 <strong>PROTOCOLO:</strong> Solo personal autorizado puede acceder a estos archivos.</p>
+                </div>
+                
+                <!-- SCROLL INDICATOR -->
+                <div class="scroll-indicator">
+                    <span class="scroll-text">📜 Desliza para leer todo el contenido</span>
+                    <div class="scroll-arrow">↓</div>
+                </div>
+            </div>
+            
+            <!-- FOOTER INTRO -->
+            <div class="intro-footer">
+                <span>🔒 SISTEMA DE SEGURIDAD NACIONAL - VERSIÓN 2.0</span>
+                <span>🚨 CLASIFICACIÓN: ULTRA SECRETO</span>
+                <span>📡 PROTOCOLO DE ACCESO: ACTIVO</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MATRIX BACKGROUND EFFECT -->
+    <div class="matrix-bg" id="matrixBg"></div>
+    
+    <!-- MAIN CONTAINER -->
+    <div class="container" id="mainContainer" style="display: none;">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-text">🔒 SISTEMA</span>
+                <span class="logo-subtitle">CRÍMENES IMPERFECTOS</span>
+                <span class="security-level">NIVEL DE SEGURIDAD: ALTO</span>
+            </div>
+            <div class="access-info">
+                <div class="timestamp" id="timestamp"></div>
+                <div class="user-level">USUARIO: INVESTIGADOR</div>
+            </div>
+        </header>
+
+        <!-- NAVIGATION -->
+        <nav class="nav">
+            <button class="nav-btn active" data-section="cases">📁 CASOS</button>
+            <button class="nav-btn" data-section="evidence">🔍 EVIDENCIAS</button>
+            <button class="nav-btn" data-section="suspects">👤 SOSPECHOSOS</button>
+            <button class="nav-btn" data-section="analysis">📊 ANÁLISIS</button>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- CASES SECTION -->
+            <section id="cases" class="content-section active">
+                <h2 class="section-title">📁 ARCHIVO DE CASOS</h2>
+                <div class="cases-grid">
+                    <div class="case-card" data-case="1">
+                        <div class="case-header">
+                            <h3>CASO #001</h3>
+                            <span class="case-status solved">RESUELTO</span>
+                        </div>
+                        <p class="case-description">El robo perfecto del Banco Central que resultó imperfecto por una huella digital en el cristal.</p>
+                        <div class="case-details">
+                            <strong>Fecha:</strong> 15/03/2024<br>
+                            <strong>Ubicación:</strong> Banco Central<br>
+                            <strong>Evidencia clave:</strong> Huella en cristal
+                        </div>
+                        <button class="case-btn" onclick="openCase(1)">INVESTIGAR</button>
+                    </div>
+
+                    <div class="case-card" data-case="2">
+                        <div class="case-header">
+                            <h3>CASO #002</h3>
+                            <span class="case-status pending">PENDIENTE</span>
+                        </div>
+                        <p class="case-description">El asesinato en la mansión abandonada con testigos que no coinciden en sus declaraciones.</p>
+                        <div class="case-details">
+                            <strong>Fecha:</strong> 22/03/2024<br>
+                            <strong>Ubicación:</strong> Mansión Blackwood<br>
+                            <strong>Evidencia clave:</strong> Testimonios contradictorios
+                        </div>
+                        <button class="case-btn" onclick="openCase(2)">INVESTIGAR</button>
+                    </div>
+
+                    <div class="case-card" data-case="3">
+                        <div class="case-header">
+                            <h3>CASO #003</h3>
+                            <span class="case-status critical">CRÍTICO</span>
+                        </div>
+                        <p class="case-description">La desaparición del diamante "Ojo de Gato" con pistas que llevan a un laberinto de mentiras.</p>
+                        <div class="case-details">
+                            <strong>Fecha:</strong> 28/03/2024<br>
+                            <strong>Ubicación:</strong> Museo de Arte<br>
+                            <strong>Evidencia clave:</strong> Video de seguridad alterado
+                        </div>
+                        <button class="case-btn" onclick="openCase(3)">INVESTIGAR</button>
+                    </div>
+
+                    <div class="case-card secret-case" data-case="4">
+                        <div class="case-header">
+                            <h3>CASO #004</h3>
+                            <span class="case-status classified">CLASIFICADO</span>
+                        </div>
+                        <p class="case-description">⚠️ ACCESO RESTRINGIDO - Solo para investigadores de nivel máximo.</p>
+                        <div class="case-details">
+                            <strong>Nivel requerido:</strong> MAXIMO<br>
+                            <strong>Clasificación:</strong> ULTRA SECRETO<br>
+                            <strong>Riesgo:</strong> EXTREMO
+                        </div>
+                        <button class="case-btn locked" onclick="attemptAccess()">DESBLOQUEAR</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EVIDENCE SECTION -->
+            <section id="evidence" class="content-section">
+                <h2 class="section-title">🔍 EVIDENCIAS RECOPILADAS</h2>
+                <div class="evidence-container">
+                    <div class="evidence-item">
+                        <h3>🔍 Huella Digital</h3>
+                        <p>Huella encontrada en el cristal del Banco Central. Coincide con sospechoso #3.</p>
+                        <div class="evidence-meta">
+                            <span>Confianza: 95%</span>
+                            <span>Fecha: 15/03/2024</span>
+                        </div>
+                    </div>
+                    <div class="evidence-item">
+                        <h3>📹 Video de Seguridad</h3>
+                        <p>Grabación del Museo de Arte. Se detectaron anomalías en los metadatos.</p>
+                        <div class="evidence-meta">
+                            <span>Confianza: 87%</span>
+                            <span>Fecha: 28/03/2024</span>
+                        </div>
+                    </div>
+                    <div class="evidence-item">
+                        <h3>🧪 Análisis de Sangre</h3>
+                        <p>Muestra de sangre encontrada en la Mansión Blackwood. Grupo sanguíneo A+.</p>
+                        <div class="evidence-meta">
+                            <span>Confianza: 92%</span>
+                            <span>Fecha: 22/03/2024</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SUSPECTS SECTION -->
+            <section id="suspects" class="content-section">
+                <h2 class="section-title">👤 PERFIL DE SOSPECHOSOS</h2>
+                <div class="suspects-grid">
+                    <div class="suspect-card">
+                        <div class="suspect-avatar">👤</div>
+                        <h3>Víctor "El Fantasma"</h3>
+                        <p>Ex empleado del banco con acceso a sistemas de seguridad.</p>
+                        <div class="suspect-stats">
+                            <span class="stat">Motivo: 85%</span>
+                            <span class="stat">Oportunidad: 90%</span>
+                            <span class="stat">Riesgo: ALTO</span>
+                        </div>
+                    </div>
+                    <div class="suspect-card">
+                        <div class="suspect-avatar">👤</div>
+                        <h3>María "La Sombra"</h3>
+                        <p>Expertisa en sistemas informáticos y acceso a redes.</p>
+                        <div class="suspect-stats">
+                            <span class="stat">Motivo: 70%</span>
+                            <span class="stat">Oportunidad: 95%</span>
+                            <span class="stat">Riesgo: MEDIO</span>
+                        </div>
+                    </div>
+                    <div class="suspect-card">
+                        <div class="suspect-avatar">👤</div>
+                        <h3>Carlos "El Invisible"</h3>
+                        <p>Especialista en evasión y cobertura de pistas.</p>
+                        <div class="suspect-stats">
+                            <span class="stat">Motivo: 60%</span>
+                            <span class="stat">Oportunidad: 75%</span>
+                            <span class="stat">Riesgo: BAJO</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ANALYSIS SECTION -->
+            <section id="analysis" class="content-section">
+                <h2 class="section-title">📊 ANÁLISIS CRIMINAL</h2>
+                <div class="analysis-container">
+                    <div class="analysis-chart">
+                        <h3>Patrón de Crímenes</h3>
+                        <div class="chart-container">
+                            <div class="chart-bar" style="height: 80%">
+                                <span>Robos</span>
+                                <span class="percentage">80%</span>
+                            </div>
+                            <div class="chart-bar" style="height: 60%">
+                                <span>Fraudes</span>
+                                <span class="percentage">60%</span>
+                            </div>
+                            <div class="chart-bar" style="height: 40%">
+                                <span>Secuestros</span>
+                                <span class="percentage">40%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="analysis-stats">
+                        <h3>Estadísticas Generales</h3>
+                        <div class="stat-item">
+                            <span class="stat-label">Casos Resueltos:</span>
+                            <span class="stat-value">24</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Casos Pendientes:</span>
+                            <span class="stat-value">7</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Tasa de Éxito:</span>
+                            <span class="stat-value">77%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- PROGRESS PANEL -->
+        <div class="progress-panel" id="progressPanel">
+            <div class="progress-header">
+                <h3>🎯 PROGRESO DE INVESTIGACIÓN</h3>
+                <button class="close-btn" onclick="closeProgress()">✕</button>
+            </div>
+            <div class="progress-content">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-stats">
+                    <span>Casos Investigados: <span id="casesSolved">0</span>/4</span>
+                    <span>Evidencias Encontradas: <span id="evidenceFound">0</span>/3</span>
+                    <span>Nivel de Experiencia: <span id="experienceLevel">1</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECRET OVERLAY -->
+        <div class="secret-overlay" id="secretOverlay">
+            <div class="secret-content">
+                <h2>🚨 ACCESO DENEGADO</h2>
+                <p>No tienes autorización para acceder a este caso clasificado.</p>
+                <p>Nivel de seguridad requerido: MAXIMO</p>
+                <div class="security-check">
+                    <input type="password" placeholder="Contraseña de acceso" id="accessPassword">
+                    <button onclick="checkAccess()">VERIFICAR</button>
+                </div>
+                <button class="close-secret" onclick="closeSecret()">CERRAR</button>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-content">
+                <span>🔒 SISTEMA DE INVESTIGACIÓN CRIMINAL</span>
+                <span>Versión 2.0 - Acceso Restringido</span>
+                <span id="sessionTime">Sesión: 00:00:00</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="mystery-crimes.js"></script>
+</body>
+</html>
